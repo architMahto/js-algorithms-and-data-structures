@@ -1,0 +1,35 @@
+{
+  "name": "js-algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "This project contains implementations of various algorithms and data structures using javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --config ./.mocharc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/architMahto/js-algorithms-and-data-structures.git"
+  },
+  "keywords": [
+    "data",
+    "structures",
+    "algorithms",
+    "javascript"
+  ],
+  "author": "Archit Mahto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/architMahto/js-algorithms-and-data-structures/issues"
+  },
+  "homepage": "https://github.com/architMahto/js-algorithms-and-data-structures#readme",
+  "devDependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@types/chai": "^4.3.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.3.6",
+    "eslint": "^8.16.0",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "spec": "./{,!(node_modules)/**}/*.spec.js",
+  "require": "src/mocha-test-setup",
+  "exclude": "**/node_modules/**/*.spec.js",
+  "recursive": true,
+  "ui": "bdd"
+}
