@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const Stack = require('./stack')
 
-describe('Testing the Stack data structure', () => {
+describe.skip('Testing the Stack data structure', () => {
   describe('init()', () => {
     let stack = new Stack()
 

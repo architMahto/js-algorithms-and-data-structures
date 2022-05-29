@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const BinaryHeap = require('./binaryHeap')
 
-describe('Testing the Binary Heap data structure', () => {
+describe.skip('Testing the Binary Heap data structure', () => {
   describe('init()', () => {
     let binaryHeap = new BinaryHeap()
 

@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const BinarySearchTree = require('./binarySearchTree')
 
-describe('Testing the Binary Search Tree data structure', () => {
+describe.skip('Testing the Binary Search Tree data structure', () => {
   describe('init()', () => {
     let bst = new BinarySearchTree(15)
 

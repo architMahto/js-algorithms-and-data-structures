@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const HashTable = require('./hashTable')
 
-describe('Testing the Binary Heap data structure', () => {
+describe.skip('Testing the Binary Heap data structure', () => {
   describe('init()', () => {
     let hashTable = new HashTable()
 

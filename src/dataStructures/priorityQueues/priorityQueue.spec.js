@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const PriorityQueue = require('./priorityQueue')
 
-describe('Testing the Binary Heap data structure', () => {
+describe.skip('Testing the Binary Heap data structure', () => {
   describe('init()', () => {
     let priorityQueue = new PriorityQueue()
 

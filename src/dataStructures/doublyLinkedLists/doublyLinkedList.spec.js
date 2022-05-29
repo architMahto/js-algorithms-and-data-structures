@@ -2,7 +2,7 @@ const { expect } = require('chai')
 
 const DoublyLinkedList = require('./doublyLinkedList')
 
-describe('Testing the Doubly Linked List data structure', () => {
+describe.skip('Testing the Doubly Linked List data structure', () => {
   describe('init()', () => {
     let list = new DoublyLinkedList()
 
