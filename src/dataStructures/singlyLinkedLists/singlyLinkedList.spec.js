@@ -60,6 +60,32 @@ describe('Testing the Singly Linked List data structure', () => {
     })
   })
 
+  describe('insert()', () => {
+    it('should be defined', () => {
+      expect(list.insert).to.not.be.undefined
+    })
+
+    it('should not insert any value at a negative index', () => {
+      const result = list.insert(-1, 5)
+
+      expect(result).to.be.false
+    })
+
+    it('should not insert any value at an index out of range', () => {
+      const result = list.insert(6, 5)
+
+      expect(result).to.be.false
+    })
+
+    it('should insert a value at the specified index', () => {
+      const result = list.insert(3, 7)
+
+      expect(result).to.be.true
+      expect(list.get(3).val).to.equal(7)
+      expect(list.length).to.equal(6)
+    })
+  })
+
   describe('pop()', () => {
     it('should be defined', () => {
       expect(list.pop).to.not.be.undefined
@@ -98,6 +124,31 @@ describe('Testing the Singly Linked List data structure', () => {
 
       expect(list.tail.val).to.equal(4)
       expect(list.length).to.equal(6)
+    })
+  })
+
+  describe('remove()', () => {
+    it('should be defined', () => {
+      expect(list.remove).to.not.be.undefined
+    })
+
+    it('should not remove and return a value if the specified index is negative', () => {
+      const returnedNode = list.remove(-1)
+
+      expect(returnedNode).to.be.undefined
+    })
+
+    it('should not remove and return a value if the specified index is out of range', () => {
+      const returnedNode = list.remove(5)
+
+      expect(returnedNode).to.be.undefined
+    })
+
+    it('should remove and return a value at the specified index', () => {
+      const returnedNode = list.remove(3)
+
+      expect(returnedNode.val).to.equal(14)
+      expect(list.length).to.equal(4)
     })
   })
 
