@@ -152,6 +152,26 @@ describe('Testing the Singly Linked List data structure', () => {
     })
   })
 
+  describe('reverse()', () => {
+    it('should be defined', () => {
+      expect(list.reverse).to.not.be.undefined
+    })
+
+    it('should reverse a linked list', () => {
+      const expectedList = new SinglyLinkedList()
+
+      expectedList.push(1)
+      expectedList.push(14)
+      expectedList.push(8)
+      expectedList.push(2)
+      expectedList.push(5)
+
+      list.reverse()
+
+      expect(list).to.deep.equal(expectedList)
+    })
+  })
+
   describe('set()', () => {
     it('should be defined', () => {
       expect(list.set).to.not.be.undefined
