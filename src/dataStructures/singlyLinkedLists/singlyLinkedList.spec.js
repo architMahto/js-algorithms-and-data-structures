@@ -3,7 +3,7 @@ const { expect } = require('chai')
 const SinglyLinkedList = require('./singlyLinkedList')
 
 describe('Testing the Singly Linked List data structure', () => {
-  let list, emptyList
+  let list, emptyList, returnedNode
 
   beforeEach(() => {
     emptyList = new SinglyLinkedList()
@@ -19,19 +19,44 @@ describe('Testing the Singly Linked List data structure', () => {
   afterEach(() => {
     emptyList = null
     list = null
+    returnedNode = null
   })
 
   describe('init()', () => {
-    let list = new SinglyLinkedList()
+    let sampleList = new SinglyLinkedList()
 
     it('should be defined', () => {
-      expect(list).to.not.be.undefined
+      expect(sampleList).to.not.be.undefined
     })
 
     it('should have head, tail, and length initialized', () => {
-      expect(list.head).to.be.null
-      expect(list.tail).to.be.null
-      expect(list.length).to.equal(0)
+      expect(sampleList.head).to.be.null
+      expect(sampleList.tail).to.be.null
+      expect(sampleList.length).to.equal(0)
+    })
+  })
+
+  describe('get()', () => {
+    it('should be defined', () => {
+      expect(list.get).to.not.be.undefined
+    })
+
+    it('should return null for a negative index', () => {
+      returnedNode = list.get(-1)
+
+      expect(returnedNode).to.be.null
+    })
+
+    it('should return null for an index out of range', () => {
+      returnedNode = list.get(10)
+
+      expect(returnedNode).to.be.null
+    })
+
+    it('should return the correct value for the specified index', () => {
+      returnedNode = list.get(2)
+
+      expect(returnedNode.val).to.equal(8)
     })
   })
 
@@ -41,13 +66,13 @@ describe('Testing the Singly Linked List data structure', () => {
     })
 
     it('should not remove and return any value if the list is empty', () => {
-      const returnedNode = emptyList.pop()
+      returnedNode = emptyList.pop()
 
       expect(returnedNode).to.be.undefined
     })
 
     it('should remove and return the last value from a non-empty list', () => {
-      const returnedNode = list.pop()
+      returnedNode = list.pop()
 
       expect(returnedNode.val).to.equal(1)
       expect(list.tail.val).to.equal(14)
@@ -76,19 +101,38 @@ describe('Testing the Singly Linked List data structure', () => {
     })
   })
 
+  describe('set()', () => {
+    it('should be defined', () => {
+      expect(list.set).to.not.be.undefined
+    })
+
+    it('should change the value for a specific node', () => {
+      const result = list.set(3, 6)
+
+      expect(result).to.be.true
+      expect(list.get(3).val).to.equal(6)
+    })
+
+    it('should not change any value if the specified node could not be found', () => {
+      const result = list.set(10, 6)
+
+      expect(result).to.be.false
+    })
+  })
+
   describe('shift()', () => {
     it('should be defined', () => {
       expect(list.shift).to.not.be.undefined
     })
 
     it('should not remove and return any value if the list is empty', () => {
-      const returnedNode = emptyList.pop()
+      returnedNode = emptyList.shift()
 
       expect(returnedNode).to.be.undefined
     })
 
     it('should remove and return the first value from a non-empty list', () => {
-      const returnedNode = list.shift()
+      returnedNode = list.shift()
 
       expect(returnedNode.val).to.equal(5)
       expect(list.head.val).to.equal(2)

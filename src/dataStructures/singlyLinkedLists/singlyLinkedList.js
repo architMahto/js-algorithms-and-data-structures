@@ -12,6 +12,19 @@ class SinglyLinkedList {
     this.length = 0
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) return null
+
+    let currentNode = this.head, counter = 0
+
+    while (counter !== index) {
+      currentNode = currentNode.next
+      counter++
+    }
+
+    return currentNode
+  }
+
   pop() {
     if (!this.head) return undefined
 
@@ -48,6 +61,17 @@ class SinglyLinkedList {
 
     this.length++
     return this
+  }
+
+  set(index, val) {
+    const foundNode = this.get(index)
+
+    if (foundNode) {
+      foundNode.val = val
+      return true
+    }
+
+    return false
   }
 
   shift() {
