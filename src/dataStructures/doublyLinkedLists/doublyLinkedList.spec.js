@@ -76,4 +76,45 @@ describe('Testing the Doubly Linked List data structure', () => {
       expect(list.length).to.equal(6)
     })
   })
+
+  describe('shift()', () => {
+    it('should be defined', () => {
+      expect(list.shift).to.not.be.undefined
+    })
+
+    it('should not remove and return any value if the list is empty', () => {
+      returnedNode = emptyList.shift()
+
+      expect(returnedNode).to.be.undefined
+    })
+
+    it('should remove and return the last value from a non-empty list', () => {
+      returnedNode = list.shift()
+
+      expect(returnedNode.val).to.equal(5)
+      expect(list.head.val).to.equal(2)
+      expect(list.length).to.equal(4)
+    })
+  })
+
+  describe('unshift()', () => {
+    it('should be defined', () => {
+      expect(list.unshift).to.not.be.undefined
+    })
+
+    it('should add a value to an empty list', () => {
+      emptyList.unshift(7)
+
+      expect(emptyList.head.val).to.equal(7)
+      expect(emptyList.tail.val).to.equal(7)
+      expect(emptyList.length).to.equal(1)
+    })
+
+    it('should add a value to the end of a list', () => {
+      list.unshift(4)
+
+      expect(list.head.val).to.equal(4)
+      expect(list.length).to.equal(6)
+    })
+  })
 })
