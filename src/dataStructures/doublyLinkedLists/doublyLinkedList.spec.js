@@ -36,6 +36,30 @@ describe('Testing the Doubly Linked List data structure', () => {
     })
   })
 
+  describe('get()', () => {
+    it('should be defined', () => {
+      expect(list.get).to.not.be.undefined
+    })
+
+    it('should return null for a negative index', () => {
+      returnedNode = list.get(-1)
+
+      expect(returnedNode).to.be.null
+    })
+
+    it('should return null for an index out of range', () => {
+      returnedNode = list.get(10)
+
+      expect(returnedNode).to.be.null
+    })
+
+    it('should return the correct value for the specified index', () => {
+      returnedNode = list.get(2)
+
+      expect(returnedNode.val).to.equal(8)
+    })
+  })
+
   describe('pop()', () => {
     it('should be defined', () => {
       expect(list.pop).to.not.be.undefined
@@ -74,6 +98,25 @@ describe('Testing the Doubly Linked List data structure', () => {
 
       expect(list.tail.val).to.equal(4)
       expect(list.length).to.equal(6)
+    })
+  })
+
+  describe('set()', () => {
+    it('should be defined', () => {
+      expect(list.set).to.not.be.undefined
+    })
+
+    it('should change the value for a specific node', () => {
+      const result = list.set(3, 6)
+
+      expect(result).to.be.true
+      expect(list.get(3).val).to.equal(6)
+    })
+
+    it('should not change any value if the specified node could not be found', () => {
+      const result = list.set(10, 6)
+
+      expect(result).to.be.false
     })
   })
 

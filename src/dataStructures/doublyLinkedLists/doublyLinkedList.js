@@ -13,6 +13,26 @@ class DoublyLinkedList {
     this.length = 0
   }
 
+  get(index) {
+    if (index < 0 || index >= this.length) return null
+
+    const startingFromBeginning = index <= Math.floor(this.length/2)
+    let currentNode = startingFromBeginning ? this.head : this.tail
+    let counter = startingFromBeginning ? 0 : this.length - 1
+
+    while (counter !== index) {
+      if (startingFromBeginning) {
+        currentNode = currentNode.next
+        counter++
+      } else {
+        currentNode = currentNode.prev
+        counter--
+      }
+    }
+
+    return currentNode
+  }
+
   pop() {
     if (!this.head) return undefined
 
@@ -45,6 +65,17 @@ class DoublyLinkedList {
 
     this.length++
     return this
+  }
+
+  set(index, val) {
+    const foundNode = this.get(index)
+
+    if (foundNode) {
+      foundNode.val = val
+      return true
+    }
+
+    return false
   }
 
   shift() {
