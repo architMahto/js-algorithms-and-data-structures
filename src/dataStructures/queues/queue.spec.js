@@ -2,18 +2,30 @@ const { expect } = require('chai')
 
 const Queue = require('./queue')
 
-describe.skip('Testing the Queue data structure', () => {
+describe('Testing the Queue data structure', () => {
+  let queue, emptyQueue
+
+  beforeEach(() => {
+    queue = new Queue()
+    emptyQueue = new Queue()
+  })
+
+  afterEach(() => {
+    queue = null
+    emptyQueue = null
+  })
+
   describe('init()', () => {
-    let queue = new Queue()
+    let sampleQueue = new Queue()
 
     it('should be defined', () => {
-      expect(queue).to.not.be.undefined
+      expect(sampleQueue).to.not.be.undefined
     })
 
     it('should have first node, last node, and queue size initialized', () => {
-      expect(queue.first).to.be.null
-      expect(queue.last).to.be.null
-      expect(queue.size).to.equal(0)
+      expect(sampleQueue.first).to.be.null
+      expect(sampleQueue.last).to.be.null
+      expect(sampleQueue.size).to.equal(0)
     })
   })
 })
