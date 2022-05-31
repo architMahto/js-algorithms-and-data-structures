@@ -33,6 +33,32 @@ class DoublyLinkedList {
     return currentNode
   }
 
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false
+
+    if (index === 0) {
+      this.unshift(val)
+      return true
+    }
+
+    if (index === this.length) {
+      this.push(val)
+      return true
+    }
+
+    const newNode = new Node(val)
+    const beforeNode = this.get(index-1)
+    const afterNode = beforeNode.next
+
+    beforeNode.next = newNode
+    newNode.prev = beforeNode
+    newNode.next = afterNode
+    afterNode.prev = newNode
+
+    this.length++
+    return true
+  }
+
   pop() {
     if (!this.head) return undefined
 
@@ -65,6 +91,24 @@ class DoublyLinkedList {
 
     this.length++
     return this
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined
+    if (index === (this.length - 1)) return this.pop()
+    if (index === 0) return this.shift()
+
+    const nodeToRemove = this.get(index)
+    const beforeNode = nodeToRemove.prev
+    const afterNode = nodeToRemove.next
+
+    beforeNode.next = afterNode
+    afterNode.prev = beforeNode
+    nodeToRemove.next = null
+    nodeToRemove.prev = null
+
+    this.length--
+    return nodeToRemove
   }
 
   set(index, val) {
