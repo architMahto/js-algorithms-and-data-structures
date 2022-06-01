@@ -55,6 +55,19 @@ describe('Testing the Binary Search Tree data structure', () => {
     })
   })
 
+  describe('dfsInOrder()', () => {
+    it('should be defined', () => {
+      expect(bst.dfsInOrder).to.not.be.undefined
+    })
+
+    it('should return the list of values from the the left to the root then to the right', () => {
+      expected = [5, 10, 13, 15, 18, 20, 25]
+      result = bst.dfsInOrder()
+
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
   describe('dfsPostOrder()', () => {
     it('should be defined', () => {
       expect(bst.dfsPostOrder).to.not.be.undefined
