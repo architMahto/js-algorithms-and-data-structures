@@ -14,7 +14,6 @@ describe('Testing the Binary Search Tree data structure', () => {
     bst.insert(10)
     bst.insert(20)
     bst.insert(5)
-    bst.insert(7)
     bst.insert(13)
     bst.insert(18)
     bst.insert(25)
@@ -49,8 +48,21 @@ describe('Testing the Binary Search Tree data structure', () => {
     })
 
     it('should return the list of values from the tree in breadth first order', () => {
-      expected = [15, 10, 20, 5, 13, 18, 25, 7]
+      expected = [15, 10, 20, 5, 13, 18, 25]
       result = bst.bfs()
+
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('dfsPostOrder()', () => {
+    it('should be defined', () => {
+      expect(bst.dfsPostOrder).to.not.be.undefined
+    })
+
+    it('should return the list of values from the the left to the right then to the root', () => {
+      expected = [5, 13, 10, 18, 25, 20, 15]
+      result = bst.dfsPostOrder()
 
       expect(result).to.deep.equal(expected)
     })
@@ -62,7 +74,7 @@ describe('Testing the Binary Search Tree data structure', () => {
     })
 
     it('should return the list of values from the root to the left then to the right', () => {
-      expected = [15, 10, 5, 7, 13, 20, 18, 25]
+      expected = [15, 10, 5, 13, 20, 18, 25]
       result = bst.dfsPreOrder()
 
       expect(result).to.deep.equal(expected)

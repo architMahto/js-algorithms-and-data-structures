@@ -28,6 +28,21 @@ class BinarySearchTree {
     return visited
   }
 
+  dfsPostOrder() {
+    let current = this.root, visited = []
+
+    const _traverse = (node) => {
+      if (node.left) _traverse(node.left)
+      if (node.right) _traverse(node.right)
+
+      visited.push(node.val)
+    }
+
+    _traverse(current)
+
+    return visited
+  }
+
   dfsPreOrder() {
     let current = this.root, visited = []
 
