@@ -1,5 +1,7 @@
 class Graph {
-  constructor() {}
+  constructor() {
+    this.adjacencyList = {}
+  }
 }
 
 module.exports = Graph
