@@ -41,6 +41,18 @@ describe('Testing the Binary Search Tree data structure', () => {
     })
   })
 
+  describe('bfs()', () => {
+    it('should be defined', () => {
+      expect(bst.bfs).to.not.be.undefined
+    })
+
+    it('should return the list of values from the tree in breadth first order', () => {
+      const result = [15, 10, 20, 5, 13, 18, 25, 7]
+
+      expect(bst.bfs()).to.deep.equal(result)
+    })
+  })
+
   describe('find()', () => {
     it('should be defined', () => {
       expect(bst.find).to.not.be.undefined
