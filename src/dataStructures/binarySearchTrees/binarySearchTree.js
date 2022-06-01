@@ -1,11 +1,15 @@
 class Node {
-  constructor() {
+  constructor(value) {
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 class BinarySearchTree {
   constructor() {
+    this.root = null
   }
 }
 
-module.exports = BinarySearchTree
+module.exports = { BinarySearchTree, Node }

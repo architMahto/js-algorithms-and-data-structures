@@ -1,19 +1,20 @@
 const { expect } = require('chai')
 
-const BinarySearchTree = require('./binarySearchTree')
+const { BinarySearchTree, Node } = require('./binarySearchTree')
 
-describe.skip('Testing the Binary Search Tree data structure', () => {
+describe('Testing the Binary Search Tree data structure', () => {
   describe('init()', () => {
-    let bst = new BinarySearchTree(15)
+    let sampleBst = new BinarySearchTree()
+    sampleBst.root = new Node(15)
 
     it('should be defined', () => {
-      expect(bst).to.not.be.undefined
+      expect(sampleBst).to.not.be.undefined
     })
 
     it('should have root node initialized', () => {
-      expect(bst.left).to.be.null
-      expect(bst.right).to.be.null
-      expect(bst.value).to.equal(15)
+      expect(sampleBst.root.left).to.be.null
+      expect(sampleBst.root.right).to.be.null
+      expect(sampleBst.root.value).to.equal(15)
     })
   })
 })
