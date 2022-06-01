@@ -3,7 +3,7 @@ const { expect } = require('chai')
 const { BinarySearchTree, Node } = require('./binarySearchTree')
 
 describe('Testing the Binary Search Tree data structure', () => {
-  let bst, noRootBst, foundNode
+  let bst, noRootBst, foundNode, expected, result
 
   beforeEach(() => {
     noRootBst = new BinarySearchTree()
@@ -24,6 +24,8 @@ describe('Testing the Binary Search Tree data structure', () => {
     noRootBst = null
     bst = null
     foundNode = null
+    expected = null
+    result = null
   })
 
   describe('init()', () => {
@@ -47,9 +49,23 @@ describe('Testing the Binary Search Tree data structure', () => {
     })
 
     it('should return the list of values from the tree in breadth first order', () => {
-      const result = [15, 10, 20, 5, 13, 18, 25, 7]
+      expected = [15, 10, 20, 5, 13, 18, 25, 7]
+      result = bst.bfs()
 
-      expect(bst.bfs()).to.deep.equal(result)
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('dfsPreOrder()', () => {
+    it('should be defined', () => {
+      expect(bst.dfsPreOrder).to.not.be.undefined
+    })
+
+    it('should return the list of values from the root to the left then to the right', () => {
+      expected = [15, 10, 5, 7, 13, 20, 18, 25]
+      result = bst.dfsPreOrder()
+
+      expect(result).to.deep.equal(expected)
     })
   })
 
