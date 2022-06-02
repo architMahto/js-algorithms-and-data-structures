@@ -11,6 +11,8 @@ describe('Testing the Binary Heap data structure', () => {
 
     const nodes = ['A', 'B', 'C', 'D', 'E']
     nodes.forEach(node => graph.addVertex(node))
+    const edges = [['A','B'], ['B','C'], ['C','D'], ['D','E'], ['E','A']]
+    edges.forEach(([v1,v2]) => graph.addEdge(v1,v2))
   })
 
   afterEach(() => {
@@ -36,10 +38,10 @@ describe('Testing the Binary Heap data structure', () => {
     })
 
     it('should add a connection between two nodes in a graph', () => {
-      graph.addEdge('A', 'B')
+      graph.addEdge('D', 'A')
 
-      expect(graph.adjacencyList['A']).to.include('B')
-      expect(graph.adjacencyList['B']).to.include('A')
+      expect(graph.adjacencyList['D']).to.include('A')
+      expect(graph.adjacencyList['A']).to.include('D')
     })
   })
 
@@ -53,6 +55,19 @@ describe('Testing the Binary Heap data structure', () => {
 
       expect(emptyGraph.adjacencyList).to.have.key('A')
       expect(emptyGraph.adjacencyList['A']).to.deep.equal([])
+    })
+  })
+
+  describe('removeEdge()', () => {
+    it('should be defined', () => {
+      expect(graph.removeEdge).to.not.be.undefined
+    })
+
+    it('should add a connection between two nodes in a graph', () => {
+      graph.removeEdge('D', 'A')
+
+      expect(graph.adjacencyList['D']).to.not.include('A')
+      expect(graph.adjacencyList['A']).to.not.include('D')
     })
   })
 })

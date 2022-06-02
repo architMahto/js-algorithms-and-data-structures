@@ -3,15 +3,20 @@ class Graph {
     this.adjacencyList = {}
   }
 
-  addEdge(vertex1, vertex2) {
-    this.adjacencyList[vertex1].push(vertex2)
-    this.adjacencyList[vertex2].push(vertex1)
+  addEdge(v1, v2) {
+    this.adjacencyList[v1].push(v2)
+    this.adjacencyList[v2].push(v1)
   }
 
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) {
       this.adjacencyList[vertex] = []
     }
+  }
+
+  removeEdge(v1, v2) {
+    this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2)
+    this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1)
   }
 }
 
