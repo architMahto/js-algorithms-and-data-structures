@@ -63,11 +63,25 @@ describe('Testing the Binary Heap data structure', () => {
       expect(graph.removeEdge).to.not.be.undefined
     })
 
-    it('should add a connection between two nodes in a graph', () => {
+    it('should remove a connection between two nodes in a graph', () => {
       graph.removeEdge('D', 'A')
 
       expect(graph.adjacencyList['D']).to.not.include('A')
       expect(graph.adjacencyList['A']).to.not.include('D')
+    })
+  })
+
+  describe('removeVertex()', () => {
+    it('should be defined', () => {
+      expect(graph.removeVertex).to.not.be.undefined
+    })
+
+    it('should remove a vertex and all its connections from a graph', () => {
+      graph.removeVertex('A')
+
+      expect(graph.adjacencyList).to.not.have.key('A')
+      expect(graph.adjacencyList['B']).to.not.include('A')
+      expect(graph.adjacencyList['E']).to.not.include('A')
     })
   })
 })
