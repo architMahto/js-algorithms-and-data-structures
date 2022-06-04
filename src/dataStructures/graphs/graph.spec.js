@@ -58,6 +58,19 @@ describe('Testing the Graph data structure', () => {
     })
   })
 
+  describe('dfsIterative()', () => {
+    it('should be defined', () => {
+      expect(graph.dfsIterative).to.not.be.undefined
+    })
+
+    it('should return the list of nodes visited in dfs order from the starting node', () => {
+      const dfsNodesVisited = graph.dfsIterative('A')
+      const expectedNodesVisited = ['A', 'C', 'E', 'F', 'D', 'B']
+
+      expect(dfsNodesVisited).to.deep.equal(expectedNodesVisited)
+    })
+  })
+
   describe('dfsRecursive()', () => {
     it('should be defined', () => {
       expect(graph.dfsRecursive).to.not.be.undefined

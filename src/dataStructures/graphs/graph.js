@@ -14,6 +14,29 @@ class Graph {
     }
   }
 
+  dfsIterative(startingVertex) {
+    const stack = [startingVertex]
+    const result = []
+    const visited = {}
+    let currentVertex
+
+    visited[startingVertex] = true
+
+    while (stack.length) {
+      currentVertex = stack.pop()
+      result.push(currentVertex)
+
+      this.adjacencyList[currentVertex].forEach(neighbour => {
+        if (!visited[neighbour]) {
+          visited[neighbour] = true
+          stack.push(neighbour)
+        }
+      })
+    }
+
+    return result
+  }
+
   dfsRecursive(startingVertex) {
     const visitedNodes = {}
 
