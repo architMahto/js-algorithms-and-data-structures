@@ -2,16 +2,16 @@ const { expect } = require('chai')
 
 const Graph = require('./graph')
 
-describe('Testing the Binary Heap data structure', () => {
+describe('Testing the Graph data structure', () => {
   let graph, emptyGraph
 
   beforeEach(() => {
     emptyGraph = new Graph()
     graph = new Graph()
 
-    const nodes = ['A', 'B', 'C', 'D', 'E']
+    const nodes = ['A', 'B', 'C', 'D', 'E', 'F']
     nodes.forEach(node => graph.addVertex(node))
-    const edges = [['A','B'], ['B','C'], ['C','D'], ['D','E'], ['E','A']]
+    const edges = [['A','B'], ['A','C'], ['B','D'], ['C','E'], ['D','E'], ['D','F'], ['E','F']]
     edges.forEach(([v1,v2]) => graph.addEdge(v1,v2))
   })
 
@@ -58,16 +58,29 @@ describe('Testing the Binary Heap data structure', () => {
     })
   })
 
+  describe('dfsRecursive()', () => {
+    it('should be defined', () => {
+      expect(graph.dfsRecursive).to.not.be.undefined
+    })
+
+    it('should return the list of nodes visited in dfs order from the starting node', () => {
+      const dfsNodesVisited = graph.dfsRecursive('A')
+      const expectedNodesVisited = ['A', 'B', 'D', 'E', 'C', 'F']
+
+      expect(dfsNodesVisited).to.deep.equal(expectedNodesVisited)
+    })
+  })
+
   describe('removeEdge()', () => {
     it('should be defined', () => {
       expect(graph.removeEdge).to.not.be.undefined
     })
 
     it('should remove a connection between two nodes in a graph', () => {
-      graph.removeEdge('D', 'A')
+      graph.removeEdge('D', 'E')
 
-      expect(graph.adjacencyList['D']).to.not.include('A')
-      expect(graph.adjacencyList['A']).to.not.include('D')
+      expect(graph.adjacencyList['D']).to.not.include('E')
+      expect(graph.adjacencyList['E']).to.not.include('D')
     })
   })
 
@@ -81,7 +94,7 @@ describe('Testing the Binary Heap data structure', () => {
 
       expect(graph.adjacencyList).to.not.have.key('A')
       expect(graph.adjacencyList['B']).to.not.include('A')
-      expect(graph.adjacencyList['E']).to.not.include('A')
+      expect(graph.adjacencyList['C']).to.not.include('A')
     })
   })
 })
